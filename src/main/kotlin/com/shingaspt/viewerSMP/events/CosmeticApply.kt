@@ -24,7 +24,7 @@ class CosmeticApply : Listener {
         Material.NETHERITE_SWORD,
     )
 
-    private val config = ViewerSMP.instance.configManager
+    private val config = ViewerSMP.configManager
 
     fun isSword(type: Material): Boolean {
         return swords.contains(type)

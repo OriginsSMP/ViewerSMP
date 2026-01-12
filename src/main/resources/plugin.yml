@@ -1,9 +1,8 @@
 name: ViewerSMP
 version: '1.0'
 main: com.shingaspt.viewerSMP.ViewerSMP
-api-version: '1.21.11'
+api-version: '1.21'
 load: STARTUP
 authors: [ ShingasPT ]
 description: ViewerSMP Main Bot
-folia-supported: true
 softdepend: [ DiscordSRV, Luckperms, Vault ]

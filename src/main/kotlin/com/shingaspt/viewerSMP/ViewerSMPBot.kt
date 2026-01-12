@@ -22,7 +22,7 @@ class ViewerSMPBot {
 
         fun start() {
 
-            val config = ViewerSMP.instance.configManager
+            val config = ViewerSMP.configManager
 
             try {
                 val token = config.getString("Bot.token")

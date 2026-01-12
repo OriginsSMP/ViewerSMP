@@ -13,7 +13,7 @@ class TicketReloadCMD : BasicCommand {
         args: Array<out String>
     ) {
         val sender = commandSourceStack.sender
-        val config = ViewerSMP.instance.configManager
+        val config = ViewerSMP.configManager
         config.reload()
         sender.sendMessage(MMParser.getMsg("<dark_red>Ticket Config - <red>ᴄᴏɴғɪɢ ғɪʟᴇ ʜᴀs ʙᴇᴇɴ ʀᴇʟᴏᴀᴅᴇᴅ!"))
     }

@@ -12,11 +12,11 @@ import java.io.File
 class ViewerSMP : JavaPlugin() {
 
     private lateinit var discordSRV : DiscordSRV
-    lateinit var configManager: ConfigManager
-        private set
 
     companion object {
         lateinit var instance: ViewerSMP
+            private set
+        lateinit var configManager: ConfigManager
             private set
     }
 
