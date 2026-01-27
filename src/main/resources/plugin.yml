@@ -1,0 +1,6 @@
+name: ViewerSMP
+version: '1.0'
+main: org.shingas.viewerSMP.ViewerSMP
+api-version: '1.21'
+authors: [ ShingasPT ]
+description: ViewerSMP Main Bot
