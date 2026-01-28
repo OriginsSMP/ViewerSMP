@@ -1,9 +1,7 @@
 package org.shingas.viewerSMP.commands;
 
-import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.BasicCommand;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
-import io.papermc.paper.command.brigadier.Commands;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.command.CommandSender;
@@ -19,10 +17,10 @@ public class ConfigReloadCMD implements BasicCommand {
     public void execute(CommandSourceStack ctx, String[] args) {
         CommandSender sender = ctx.getSender();
         ConfigManager config = ViewerSMP.getConfigManager();
-        config.reload();
+        config.reloadAll();
         TagResolver tags = TagResolver.resolver(
-                Placeholder.parsed("prefix", config.getString("Prefix")),
-                Placeholder.parsed("message", config.getString("Messages.configReload"))
+                Placeholder.parsed("prefix", config.config().getString("Prefix")),
+                Placeholder.parsed("message", config.config().getString("ConfigReload"))
         );
         sender.sendMessage(MMParser.getMsgTags("<prefix> <message>", tags));
     }

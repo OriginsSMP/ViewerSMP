@@ -19,9 +19,10 @@ public final class ViewerSMP extends JavaPlugin {
         getLogger().info("ViewerSMP is starting...");
         instance = this;
 
-        getLogger().info("Loading config...");
-        configManager = new ConfigManager();
-        getLogger().info("Config loaded!");
+        getLogger().info("Loading configs...");
+        configManager = new ConfigManager(this);
+        configManager.loadConfigs();
+        getLogger().info("Configs loaded!");
 
         getServer().getPluginManager().registerEvents(new CosmeticApply(), this);
 
@@ -44,9 +45,9 @@ public final class ViewerSMP extends JavaPlugin {
         // Plugin shutdown logic
 
         getLogger().info("ViewerSMP is shutting down...");
-        getLogger().info("Saving config...");
-        configManager.save();
-        getLogger().info("Config saved!");
+        getLogger().info("Saving configs...");
+        configManager.reloadAll();
+        getLogger().info("Configs saved!");
         getLogger().info("ViewerSMP is offline.");
     }
 

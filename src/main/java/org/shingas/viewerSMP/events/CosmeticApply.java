@@ -2,6 +2,7 @@ package org.shingas.viewerSMP.events;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,18 +13,18 @@ import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.components.CustomModelDataComponent;
 import org.shingas.viewerSMP.ViewerSMP;
-import org.shingas.viewerSMP.utils.ConfigManager;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class CosmeticApply implements Listener {
 
-    private final ConfigManager config = ViewerSMP.getConfigManager();
+    private final FileConfiguration config = ViewerSMP.getConfigManager().cosmetics();
 
     public boolean isItemApplicable(String mat, int token) {
-        String path = "CosmeticTokens.Token$token.type";
-        List<String> types = config.getList(path);
+        String path = "CosmeticTokens.Token" + token + ".type";
+        List<String> types = config.getStringList(path);
         for (String type : types) {
             if (mat.contains(type)) return true;
         }
@@ -35,8 +36,8 @@ public class CosmeticApply implements Listener {
             ItemMeta itemMeta = item.getItemMeta();
             if (itemMeta.hasCustomModelDataComponent()) {
                 int modelData = itemMeta.getCustomModelDataComponent().getFloats().getFirst().intValue();
-                String path = "CosmeticTokens.Token$modelData.modelData";
-                if(config.pathExists(path)) {
+                String path = "CosmeticTokens.Token" + modelData + ".modelData";
+                if(config.isSet(path)) {
                     return config.getInt(path);
                 }
             }
@@ -74,8 +75,11 @@ public class CosmeticApply implements Listener {
                 }
 
                 //Apply the custom model data to the new sword
+
                 CustomModelDataComponent cmd = newMeta.getCustomModelDataComponent();
-                cmd.getFloats().add((float) token);
+                List<Float> floats = new ArrayList<>(cmd.getFloats());
+                floats.add((float) token);
+                cmd.setFloats(floats);
                 newMeta.setCustomModelDataComponent(cmd);
 
                 //Apply the enchants to new sword

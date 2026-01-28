@@ -1,48 +1,47 @@
 package org.shingas.viewerSMP.utils;
 
-import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.shingas.viewerSMP.ViewerSMP;
 
-import java.util.List;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.shingas.viewerSMP.ViewerSMP;
+import org.shingas.viewerSMP.data.CustomConfig;
 
 public class ConfigManager {
 
-    private FileConfiguration config;
-    private ViewerSMP plugin;
+    private final JavaPlugin plugin;
 
-    public ConfigManager() {
-        plugin = ViewerSMP.getInstance();
-        plugin.saveDefaultConfig();
-        config = plugin.getConfig();
+    private CustomConfig mainConfig;
+    private CustomConfig cosmetics;
+    private CustomConfig feelings;
+
+    public ConfigManager(ViewerSMP plugin) {
+        this.plugin = plugin;
     }
 
-    public void reload() {
+    public void loadConfigs() {
+        plugin.saveDefaultConfig(); // config.yml
+
+        mainConfig = new CustomConfig(plugin, "config.yml");
+        cosmetics = new CustomConfig(plugin, "cosmetics.yml");
+        feelings = new CustomConfig(plugin, "feelings.yml");
+    }
+
+    public void reloadAll() {
         plugin.reloadConfig();
-        config = plugin.getConfig();
-        Bukkit.getLogger().info("Ticket's config was reloaded.");
+        mainConfig.reload();
+        cosmetics.reload();
+        feelings.reload();
     }
 
-
-    public String getString(String path)  {
-        return config.getString(path);
+    public FileConfiguration config() {
+        return mainConfig.get();
     }
 
-    public int getInt(String path)  {
-        return config.getInt(path);
+    public FileConfiguration cosmetics() {
+        return cosmetics.get();
     }
 
-    public List<String> getList(String path) {
-        return config.getStringList(path);
+    public FileConfiguration feelings() {
+        return feelings.get();
     }
-
-    public boolean pathExists(String path) {
-        return config.contains(path);
-    }
-
-    public void save() {
-        plugin.saveConfig();
-        Bukkit.getLogger().info("Ticket's config was saved.");
-    }
-
 }

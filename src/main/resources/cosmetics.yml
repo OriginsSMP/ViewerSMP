@@ -1,0 +1,46 @@
+CosmeticTokens:
+  Token1401:
+    type:
+      - sword
+    modelData: 1400
+  Token1403:
+    type:
+      - sword
+    modelData: 1402
+  Token1405:
+    type:
+      - sword
+    modelData: 1404
+  Token1407:
+    type:
+      - axe
+    modelData: 1406
+  Token1409:
+    type:
+      - sword
+    modelData: 1408
+  Token1411:
+    type:
+      - sword
+      - mace
+    modelData: 1410
+  Token1413:
+    type:
+      - axe
+    modelData: 1412
+  Token1415:
+    type:
+      - sword
+    modelData: 1414
+  Token1417:
+    type:
+      - sword
+    modelData: 1416
+  Token1419:
+    type:
+      - sword
+    modelData: 1418
+  Token1421:
+    type:
+      - bow
+    modelData: 1420
