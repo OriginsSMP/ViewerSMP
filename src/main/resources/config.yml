@@ -1,2 +1,4 @@
 Prefix: "<dark_gray>[</dark_gray><yellow>VSMP<dark_gray>]</dark_gray>"
-ConfigReload: "<yellow>Config <gray>-</gray> <green>ViewerSMP config has been reloaded!"
+ConfigReload: "<yellow>Config <gray>-</gray> <green>Main config has been reloaded!"
+CosmeticsReload: "<yellow>Config <gray>-</gray> <green>Cosmetics config has been reloaded!"
+FeelingsReload: "<yellow>Config <gray>-</gray> <green>Feelings config has been reloaded!"
