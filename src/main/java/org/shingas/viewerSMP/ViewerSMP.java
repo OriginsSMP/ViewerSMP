@@ -3,6 +3,7 @@ package org.shingas.viewerSMP;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.shingas.viewerSMP.commands.ConfigReloadCMD;
+import org.shingas.viewerSMP.commands.TickleFeeling;
 import org.shingas.viewerSMP.events.CosmeticApply;
 import org.shingas.viewerSMP.utils.ConfigManager;
 
@@ -28,9 +29,11 @@ public final class ViewerSMP extends JavaPlugin {
         getLogger().info("Registering commands...");
         getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, event -> {
             event.registrar().register("vsmpreload", new ConfigReloadCMD());
+            event.registrar().register("tickle", new TickleFeeling());
         });
         getLogger().info("Registered 1 commands:");
-        getLogger().info("- /vsmpreload");
+        getLogger().info("- /vsmpreload <on/off>");
+        getLogger().info("- /tickle <player>");
 
         getLogger().info("ViewerSMP has started.");
 

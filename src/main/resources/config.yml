@@ -1,6 +1,7 @@
 Prefix: "<dark_gray>[</dark_gray><yellow>VSMP<dark_gray>]</dark_gray>"
 Messages:
   configReload: "<yellow>Config <gray>-</gray> <green>ViewerSMP config has been reloaded!"
+  tickleFeeling: "<white><player> has <yellow>tickled <white>you! <aqua>tee hee"
 CosmeticTokens:
   Token1401:
     type:
